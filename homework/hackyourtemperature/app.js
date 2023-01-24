@@ -1,8 +1,4 @@
 import express from 'express';
-import path from 'path';
-import bodyParser from "body-parser";
-import { dirname } from 'path';
-import { fileURLToPath } from "url";
 import fetch from 'node-fetch';
 import { keys } from "./sources/keys.js";
 

@@ -1,7 +1,4 @@
 import express from 'express';
-import path from 'path';
-import { dirname } from 'path';
-import { fileURLToPath } from "url";
 import { getWeatherForecast, server, hello } from './app.js';
 
 const app = express();
