@@ -8,18 +8,15 @@ import { keys } from "./sources/keys.js";
 
 
 
-
-const __filename = fileURLToPath(import.meta.url)
-const __dirname = dirname(__filename)
 const app = express();
 const port = 3000;
 
 
 
 
-export const grabHtml = (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'index.html'));
-};
+export const hello = (req, res) => {
+  res.send('hello from backend to frontend!');
+}
 
 
 export const getWeatherForecast = async (req, res) => {
