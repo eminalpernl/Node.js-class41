@@ -35,18 +35,22 @@ app.post('/weather', async (req, res) => {
   console.log(api);
   const response = await fetch(api, {method: 'POST', body: 'a=1'});
   console.log(response);
+  try {
+    if (response.status === 200) {
+      const WeatherForecast = await response.json();
+      const currentTemp = WeatherForecast.main.temp;
+      const feelsLike = WeatherForecast.main.feels_like;
 
-  if (response.status === 200) {
-    const WeatherForecast = await response.json();
-    const currentTemp = WeatherForecast.main.temp;
-    const feelsLike = WeatherForecast.main.feels_like;
-
-    res.send({
-      Message: `It is ${currentTemp} degree in ${cityName}. It feels like ${feelsLike} `,
-    });
-  } else{
-    res.send({ Message: `There is no data with the name of ${cityName}` })
+      res.send({
+        Message: `It is ${currentTemp} degree in ${cityName}. It feels like ${feelsLike} `,
+      });
+    } else{
+      res.send({ Message: `There is no data with the name of ${cityName}` })
+    }
+  } catch (error) {
+    console.error(error);
   }
+  
 
 });
 
